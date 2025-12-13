@@ -4,14 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nova Community — Loja Premium de Serviços</title>
-  <!-- Fonte Roboto via Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       background: #121e3a;
-      color: #fff;
-      font-family: 'Roboto', sans-serif;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: -0.01em;
       display: flex;
       overflow-x: hidden;
     }
@@ -28,8 +33,9 @@
       padding: 40px 20px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 15px;
       font-weight: 500;
+      overflow-y: auto;
     }
 
     nav a {
@@ -43,9 +49,14 @@
       color: #a48bff;
     }
 
-    /* Main content */
+    nav hr {
+      border: 1px solid #555;
+      margin: 15px 0;
+    }
+
+    /* Main */
     main {
-      margin-left: 240px; /* espaço para a barra */
+      margin-left: 240px;
       padding: 40px;
       width: calc(100% - 240px);
     }
@@ -63,7 +74,6 @@
 
     .hero-img {
       width: 300px;
-      max-width: 100%;
       border-radius: 20px;
       filter: drop-shadow(0 0 20px #a48bff60);
       animation: float 4s ease-in-out infinite;
@@ -91,7 +101,8 @@
       margin: 60px 0 30px;
       font-weight: 900;
     }
-
+    
+    /* Cards */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -149,49 +160,75 @@
       text-decoration: none;
     }
 
-    footer section {
-      margin-top: 20px;
-    }
+    /* Ajustes tipográficos estilo Banco Inter */
+    h1, h2, h3 {
+     letter-spacing: -0.02em;
+}
+
+    .hero-title {
+     font-weight: 800;
+     letter-spacing: -0.03em;
+}
+
+    .card p {
+     font-size: 0.95rem;
+}
+
+    h2 {
+     font-weight: 700;
+}
 
   </style>
 </head>
+
 <body>
 
   <nav>
     <a href="#home">Página Inicial</a>
-    <a href="#servicos">Serviços</a>
     <a href="#termos">Termos</a>
     <a href="#contato">Contato</a>
     <a href="https://discord.gg/csEcMBd9Gf" target="_blank">Servidor</a>
+    
+    <hr>
+
+    <!-- Menu de Jogos -->
+    <a href="#gi">Genshin Impact</a>
+    <a href="#hsr">Honkai: Star Rail</a>
+    <a href="#zzz">Zenless Zone Zero</a>
+    <a href="#wuwa">Wuthering Waves</a>
   </nav>
 
   <main>
     <header id="home">
-      <!-- Logo -->
       <img src="https://64.media.tumblr.com/4dca4e17536f516f2d4e7ef3a4ec1c54/7f94173580ba73be-fd/s1280x1920/afaab3ec00facbe0e1e13684c5b9f6d7593a1b46.jpg" alt="Nova Community Logo" class="hero-img"/>
       <h1 class="hero-title">Nova Community<br><span>Loja Premium</span> de GI, HSR, ZZZ e WUWA</h1>
     </header>
 
-    <!-- Serviços -->
-    <div id="servicos">
-      <h2>Giros — Manual</h2>
+    <!-- Genshin Impact -->
+    <div id="gi">
+     <h2>Genshin Impact</h2>
+      <h2>Giros</h2>
       <div class="card-grid">
-        <div class="card"><p>800 gemas — 05 Giros — R$ 6,00 (2 dias)</p></div>
-        <div class="card"><p>1.600 gemas — 10 Giros — R$ 12,00 (4 dias)</p></div>
-        <div class="card"><p>3.200 gemas — 20 Giros — R$ 24,00 (7 dias)</p></div>
-        <div class="card"><p>4.800 gemas — 30 Giros — R$ 36,00 (12 dias)</p></div>
-        <div class="card"><p>6.400 gemas — 40 Giros — R$ 48,00 (16 dias)</p></div>
-        <div class="card"><p>8.000 gemas — 50 Giros — R$ 60,00 (20 dias)</p></div>
-      </div>
+        <div class="card">
+          <h3>Manual</h3>
+          <p>800 gemas - 05 Giros – R$ 6,00 (2 dias)</p>
+          <p>1.600 gemas - 10 Giros – R$ 12,00 (4 dias)</p>
+          <p>3.200 gemas - 20 Giros – R$ 24,00 (7 dias)</p>
+          <p>4.800 gemas - 30 Giros – R$ 36,00 (12 dias)</p>
+          <p>6.400 gemas - 40 Giros – R$ 48,00 (16 dias)</p>
+          <p>8.000 gemas - 50 Giros – R$ 60,00 (20 dias)</p>
 
-      <h2>Giros — Script</h2>
-      <div class="card-grid">
-        <div class="card"><p>800 gemas — 05 Giros — R$ 5,00 (1 dia)</p></div>
-        <div class="card"><p>1.600 gemas — 10 Giros — R$ 11,00 (1 dia)</p></div>
-        <div class="card"><p>3.200 gemas — 20 Giros — R$ 23,00 (2 dias)</p></div>
-        <div class="card"><p>4.800 gemas — 30 Giros — R$ 35,00 (2 dias)</p></div>
-        <div class="card"><p>6.400 gemas — 40 Giros — R$ 47,00 (4 dias)</p></div>
-        <div class="card"><p>8.000 gemas — 50 Giros — R$ 57,00 (4 dias)</p></div>
+        </div>
+        <div class="card">
+          <h3>Script</h3>
+         <p>800 gemas - 05 Giros – R$ 5,00 (1 dia)</p>
+        <p>1.600 gemas - 10 Giros – R$ 11,00 (1 dia)</p>
+        <p>3.200 gemas - 20 Giros – R$ 23,00 (2 dias)</p>
+        <p>4.800 gemas - 30 Giros – R$ 35,00 (2 dias)</p>
+        <p>6.400 gemas - 40 Giros – R$ 47,00 (4 dias)</p>
+        <p>8.000 gemas - 50 Giros – R$ 57,00 (4 dias)</p>
+
+        </div>
       </div>
 
       <!-- Missões -->
@@ -227,7 +264,7 @@
       <h2>Upgrades</h2>
       <div class="card-grid">
         <div class="card">
-          <h3>Serviços</h3>
+          <h3>Manual/Script</h3>
           <p>Farm-pers. lvl20-90 – R$ 15,00 (Sem prazo)</p>
           <p>Up/Arma lvl20-90 – R$ 15,00 (Sem prazo)</p>
           <p>Farm 01 Set – R$ 2,00 (1 hora)</p>
@@ -301,39 +338,145 @@
       </div>
     </div>
 
+    <!-- Honkai: Star Rail -->
+    <div id="hsr">
+      <h2>Honkai: Star Rail</h2>
+      <h2>Stellar Jade</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>800 Stellar (5 pulls) – R$ 8 – 1 dia</p>
+          <p>1.600 Stellar (10 pulls) – R$ 12 – 2 dias</p>
+          <p>3.200 Stellar (20 pulls) – R$ 24 – 4 dias</p>
+          <p>4.800 Stellar (30 pulls) – R$ 36 – 6 dias</p>
+          <p>8.000 Stellar (50 pulls) – R$ 48 – 8 dias</p>
+ 
+        </div>
+      </div>
+
+      <!-- Missões -->
+      <h2>Cuidados com a Conta</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>R$ 3 – 1 Dia</p>
+          <p>R$ 15 – 1 Semana</p>
+          <p>R$ 30 – 1 Mês</p>
+          <p>R$ 50 – 1 Versão</p>
+
+        </div>
+      </div>
+
+      <!-- Upgrades -->
+      <h2>End Games</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>R$ 20 – MOC – 1 dia</p>
+          <p>R$ 40 – Sombra AP – 1 dia</p>
+          <p>R$ 60 – Pura Ficção – 1 dia</p>
+          <p>R$ 100 – Arbitragem de Anomalias – 1 dia</p>
+
+        </div>
+      </div>
+
+      <!-- Abismo -->
+      <h2>Explorações 100%</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Nave da Herta – R$ 10 – 1 dia</p>
+          <p>Jarilo-VI – R$ 20 – 1 dia</p>
+          <p>Xianzhou – R$ 35 – 2 dias</p>
+          <p>Penacony – R$ 50 – 3 dias</p>
+          <p>Amphoreus – R$ 45 – 5 dias</p>
+
+        </div>
+      </div>
+
+      <!-- Teatro -->
+      <h2>Coleta</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Pássaros de Origami – R$ 35 – 2 dias</p>
+          <p>Ninfas – R$ 5 a cada 10 Ninfas – 5 dias</p>
+
+        </div>
+      </div>
+
+      <!-- Oculis -->
+      <h2>Missões</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Missão de Desbravamento – R$ 10 cada ato – 1 dia cada ato</p>
+          <p>Desbravamento (completo) – R$ 40 – 3 dias</p>
+          <p>Missão Companheiro – R$ 10 – 1 dia</p>
+        </div>
+      </div>
+    </div>
+
+      <!-- Oculis -->
+      <h2>Ascensões</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Personagem – R$ 10 – 1 dia</p>
+          <p>Rastro – R$ 15 – 1 dia</p>
+          <p>Cone de Luz – R$ 15 – 1 dia</p>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Oculis -->
+      <h2>Conteúdos</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Universo Simulado Inteiro (cada mundo) – R$ 50 – 2 dias</p>
+          <p>Universo Simulado Semanal (cada mundo) – R$ 15 – 1 dia</p>
+          <p>Universo do Enxame – R$ 35 – 3 dias</p>
+          <p>Universo do Ouro e Engrenagem – R$ 35 – 3 dias</p>
+          <p>Universo Domínio Incógnito – R$ 35 – 2 dias</p>
+          <p>Universo Divergente (Amphoreus) Inteiro – R$ 25 – 3 dias</p>
+          <p>Universo Divergente (Amphoreus) Semanal – R$ 15 – 1 dia</p>
+          <p>Guerras Monetárias – R$ 20 – 3 dias</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Zenless Zone Zero -->
+    <div id="zzz">
+      <h2>Zenless Zone Zero</h2>
+      <p>Espaço reservado para adicionar códigos e serviços do ZZZ. Em breve na Tabela.</p>
+    </div>
+
+    <!-- Wuthering Waves -->
+    <div id="wuwa">
+      <h2>Wuthering Waves</h2>
+      <p>Espaço reservado para adicionar códigos e serviços do WUWA. Em breve na Tabela.</p>
+    </div>
+
     <!-- Termos -->
     <div id="termos" class="terms">
       <h3>Pagamentos e Início do Serviço</h3>
       <p>O prazo padrão para inicialização do serviço é de até 48 horas após a confirmação do pagamento.</p>
-      <p>Durante períodos de alta demanda, o tempo pode variar.</p>
-      <p>Pressões ou cobranças indevidas não serão toleradas.</p>
-
       <h3>Reembolsos e Arrependimentos</h3>
       <p>Arrependimentos e mudanças de ideia não são reembolsáveis.</p>
-      <p>Reembolsos só serão analisados em caso de falha comprovada pela equipe.</p>
-      <p>Tentativas de forçar reembolso resultam em bloqueio permanente.</p>
-
       <h3>Atendimento e Suporte</h3>
       <p>O atendimento ocorre exclusivamente via tickets do Discord.</p>
-      <p>Mensagens privadas serão ignoradas.</p>
-      <p>Atendimento por ordem de chegada.</p>
-
       <h3>Execução e Entrega</h3>
       <p>A Nova Community entrega exatamente o que foi solicitado.</p>
-      <p>Se o cliente não enviar as informações necessárias, o prazo será suspenso.</p>
-      <p>Algumas entregas podem ser divididas em etapas.</p>
-
       <h3>Conduta e Respeito</h3>
       <p>Respeito à equipe é obrigatório.</p>
-      <p>Ofensas, ironias e spam podem gerar recusa de atendimento.</p>
-
       <h3>Responsabilidade do Comprador</h3>
       <p>O cliente assume responsabilidade total sobre riscos envolvendo ferramentas usadas.</p>
-      <p>A Nova Community não se responsabiliza por bans, penalidades ou bloqueios.</p>
-
       <h3>Alterações nos Termos</h3>
       <p>Os termos podem ser alterados sem aviso prévio.</p>
-      <p>O cliente deve manter-se atualizado.</p>
     </div>
 
     <!-- Contato -->
@@ -342,8 +485,6 @@
       <p>Discord: @wz.foxyyy</p>
       <p>Telefone: 67 99338‑2426</p>
       <p><a href="https://discord.gg/csEcMBd9Gf">Servidor: discord.gg/csEcMBd9Gf</a></p>
-
-
       <p>Website by @wz.foxyyy on dc.</p>
     </footer>
 
