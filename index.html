@@ -11,7 +11,7 @@
   <style>
     body {
       margin: 0;
-      background: #121e3a;
+      background: #081328;
       color: #ffffff;
       font-family: 'Inter', sans-serif;
       font-weight: 400;
@@ -46,7 +46,7 @@
     }
 
     nav a:hover {
-      color: #a48bff;
+      color: #f703ac;
     }
 
     nav hr {
@@ -91,7 +91,7 @@
     }
 
     .hero-title span {
-      color: #b48cff;
+      color: #f703ac;
     }
 
     /* Sections */
@@ -120,8 +120,8 @@
 
     .card:hover {
       transform: translateY(-8px);
-      border-color: #b48cff;
-      box-shadow: 0 0 25px #b48cff40;
+      border-color: #f703ac;
+      box-shadow: 0 0 25px #4f3b8a;
     }
 
     /* Terms */
@@ -137,7 +137,7 @@
     .terms h3 {
       margin-top: 30px;
       font-size: 1.7rem;
-      color: #caa6ff;
+      color: #f703ac;
     }
 
     .terms p {
@@ -156,9 +156,16 @@
     }
 
     footer a {
-      color: #b48cff;
-      text-decoration: none;
-    }
+  color: #f703ac; /* cor do link */
+  text-decoration: none;
+  transition: 0.25s;
+}
+
+    footer a:hover {
+  color: #ffffff; /* cor ao passar o mouse */
+  text-shadow: 0 0 8px #f703ac80;
+}
+
 
     /* Ajustes tipográficos estilo Banco Inter */
     h1, h2, h3 {
@@ -452,7 +459,130 @@
     <!-- Zenless Zone Zero -->
     <div id="zzz">
       <h2>Zenless Zone Zero</h2>
-      <p>Espaço reservado para adicionar códigos e serviços do ZZZ. Em breve na Tabela.</p>
+      <h2>Policromos</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>800 policromios — 5 giros — R$ 9,00 - até 1 dia.</p>
+          <p>1.600 policromios — 10 giros — R$ 14,00 - até 2 dias.</p>
+          <p>3.200 policromios — 20 giros — R$ 24,00 - até 3 dias.</p>
+          <p>4.800 policromios — 30 giros — R$ 34,00 - de 4 a 5 dias.</p>
+          <p>6.400 policromios — 40 giros — R$ 44,00 - até 5 dias.</p>
+          <p>8.000 policromios — 50 giros — R$ 54,00 - de 6 a 7 dias.</p>
+        </div>
+      </div>
+
+      <!-- Missões -->
+      <h2>Missões</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Missão completa (9 capítulos) - R$ 70,00 - de 3 a 4 dias.</p>
+          <p>Apenas 1 capítulo - R$ 10,00 - até 1 dia.</p>
+          <p>Missão secundária (cada uma) - R$ 2,00 - de 1 a 2 dias.</p>
+        </div>
+      </div>
+
+      <!-- Upgrades -->
+      <h2>Histórias dos Agentes</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Todas as 18 histórias - R$ 55,00 - de 2 a 3 dias.</p>
+          <p>1 história - R$ 5,00 - até 1 dia.</p>
+        </div>
+      </div>
+
+      <!-- Abismo -->
+      <h2>End Games</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Nódulo Estável (Nível 1 ao 10) – R$ 15,00 – de 1 a 2 dias</p>
+          <p>Nódulo de Conflito (Nível 1 ao 8) – R$ 13,00 – de 1 a 2 dias</p>
+          <p>Nódulo Crítico (Nível 1 ao 7) – R$ 12,00 – até 1 dia</p>
+          <p>Investida Mortal – R$ 20,00 – de 1 a 2 dias</p>
+          <p>Teste de Combate Virtual (por Nível) – R$ 2,00 – de 10 a 15 minutos</p>
+          <p>Teste de Combate: Sem Saída (por Nível) – R$ 3,00 – de 10 a 15 minutos</p>
+
+
+        </div>
+      </div>
+
+      <!-- Teatro -->
+      <h2>Cidade Definhada</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Área 01 – Metrô da Velha Capital – R$ 10,00 – de 30 a 45 minutos</p>
+          <p>Área 02 – Ruínas da Construção – R$ 10,00 – de 30 a 60 minutos</p>
+          <p>Área 03 – Ruínas do Edifício Gigante – R$ 10,00 – de 10 a 15 minutos</p>
+          <p>Canteiro Definhado – R$ 15,00 – até 1 dia</p>
+          <p>Colheita Ardente – R$ 15,00 – até 1 dia</p>
+
+
+        </div>
+      </div>
+
+      <!-- Oculis -->
+      <h2>Vazio Perdido</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Extermínio da Linha de Frente (até o Nível Máximo) – R$ 15,00 – até 1 dia</p>
+          <p>Aniquilação dos Transgressores (todos os Níveis) – R$ 5,00 – de 30 a 60 minutos</p>
+          <p>Operação de Reconstituição – R$ 15,00 – até 1 dia</p>
+
+        </div>
+      </div>
+    </div>
+
+      <!-- Oculis -->
+      <h2>Cuidados com a Conta</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Diário – R$ 2,00 – até 1 dia</p>
+          <p>Semanal – R$ 15,00 – até 7 dias</p>
+          <p>Por Versão – R$ 50,00 – indefinido (depende da versão do jogo)</p>
+
+          <p>(Diárias, gasto de bateria diária e passe)</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Oculis -->
+      <h2>Eventos</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Todos os Eventos (versão) – R$ 20,00 – indefinido (depende da versão do jogo)</p>
+          <p>Eventos Menores (versão) – R$ 5,00 – indefinido (depende da versão do jogo)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Oculis -->
+      <h2>Livro Miau</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Por Área – R$ 15,00 – até 1 dia</p>
+          <p>1 Página – R$ 6,00 – de 2 a 3 horas</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Oculis -->
+      <h2>BangBoo</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Manual</h3>
+          <p>Cada Nível - 2 R$ - até 2 dias.</p>
+        </div>
+      </div>
     </div>
 
     <!-- Wuthering Waves -->
@@ -504,8 +634,6 @@
       <p><a href="https://discord.gg/csEcMBd9Gf">Servidor: discord.gg/csEcMBd9Gf</a></p>
       <p>➤﹕NF2U/Don't repost or inspo | Website by @wz.foxyyy on dc.</p>
     </footer>
-
-  </main>
 
 </body>
 </html>
