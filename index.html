@@ -1,639 +1,384 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nova Community — Loja Premium de Serviços</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova Community — Catálogo</title>
 
-  <!-- Fontes -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-  <style>
-    body {
-      margin: 0;
-      background: #081328;
-      color: #ffffff;
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      line-height: 1.6;
-      letter-spacing: -0.01em;
-      display: flex;
-      overflow-x: hidden;
-    }
+<style>
+:root {
+  --bg-main: #0b0b10;
+  --bg-card: #14141c;
+  --pink: #ff2fa6;
+  --purple: #7b5cff;
+  --text-main: #f2f2f7;
+  --text-muted: #b5b5c5;
+  --green: #2ecc71;
+  --red: #ff3b3b;
+  --btn-dark: #2a2a35; /* Cor do botão bloqueado */
+}
 
-    /* Sidebar */
-    nav {
-      width: 220px;
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: #000000cc;
-      backdrop-filter: blur(10px);
-      padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      font-weight: 500;
-      overflow-y: auto;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      transition: 0.3s;
-      font-size: 1.1rem;
-    }
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, #1a1333, var(--bg-main));
+  color: var(--text-main);
+  line-height: 1.6;
+}
 
-    nav a:hover {
-      color: #f703ac;
-    }
+/* --- NAVBAR (Estilo Glass Transparente) --- */
+.navbar {
+  background: rgba(10, 10, 10, 0.6); /* Transparência ajustada */
+  backdrop-filter: blur(6px); /* Blur diminuído para ver o fundo */
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-    nav hr {
-      border: 1px solid #555;
-      margin: 15px 0;
-    }
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    /* Main */
-    main {
-      margin-left: 240px;
-      padding: 40px;
-      width: calc(100% - 240px);
-    }
-
-    /* Hero */
-    header {
-      width: 100%;
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .hero-img {
-      width: 300px;
-      border-radius: 20px;
-      filter: drop-shadow(0 0 20px #a48bff60);
-      animation: float 4s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    .hero-title {
-      margin-top: 30px;
-      font-size: 3rem;
-      font-weight: 900;
-    }
-
-    .hero-title span {
-      color: #f703ac;
-    }
-
-    /* Sections */
-    h2 {
-      font-size: 2.2rem;
-      text-align: center;
-      margin: 60px 0 30px;
-      font-weight: 900;
-    }
-    
-    /* Cards */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-bottom: 50px;
-    }
-
-    .card {
-      background: #0f0f11;
-      padding: 20px;
-      border-radius: 18px;
-      border: 1px solid #ffffff10;
-      transition: 0.25s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: #f703ac;
-      box-shadow: 0 0 25px #4f3b8a;
-    }
-
-    /* Terms */
-    .terms {
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 30px;
-      background: #0f0f10;
-      border-radius: 20px;
-      border: 1px solid #ffffff15;
-    }
-
-    .terms h3 {
-      margin-top: 30px;
-      font-size: 1.7rem;
-      color: #f703ac;
-    }
-
-    .terms p {
-      color: #ddd;
-      line-height: 1.5rem;
-      margin: 8px 0;
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 60px;
-      padding: 40px;
-      text-align: center;
-      background: #09090a;
-      color: #aaa;
-    }
-
-    footer a {
-  color: #f703ac; /* cor do link */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-main);
   text-decoration: none;
-  transition: 0.25s;
 }
 
-    footer a:hover {
-  color: #ffffff; /* cor ao passar o mouse */
-  text-shadow: 0 0 8px #f703ac80;
+.logo i {
+  color: var(--pink);
 }
 
-
-    /* Ajustes tipográficos estilo Banco Inter */
-    h1, h2, h3 {
-     letter-spacing: -0.02em;
+.nav-links {
+  display: flex;
+  gap: 2rem;
 }
 
-    .hero-title {
-     font-weight: 800;
-     letter-spacing: -0.03em;
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s;
 }
 
-    .card p {
-     font-size: 0.95rem;
+.nav-links a:hover, .nav-links a.active {
+  color: var(--pink);
 }
 
-    h2 {
-     font-weight: 700;
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-  </style>
+/* --- HEADER --- */
+header {
+  text-align: center;
+  padding: 8.5rem 1rem 3rem; 
+}
+
+header h1 {
+  font-size: 2.8rem;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+header p {
+  color: var(--text-muted);
+  margin-top: .5rem;
+}
+
+/* --- CATÁLOGO & CARDS --- */
+.catalogo {
+  padding: 3rem 6%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0,0,0,.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 40px rgba(255,47,166,0.25);
+}
+
+.image-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 175px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
+
+.card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* STATUS */
+.status {
+  font-size: .85rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+
+.status::before {
+  content: "●";
+}
+
+.status.disponivel { color: var(--green); }
+.status.em-breve { color: var(--red); }
+
+.info {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* RODAPÉ DO CARD */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.preco {
+  font-size: 1.15rem;
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+/* BOTÕES */
+.btn-acao {
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.btn-ver-mais {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+}
+
+.btn-ver-mais:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 47, 166, 0.4);
+}
+
+.btn-bloqueado {
+  background: var(--btn-dark);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* CARD EM BREVE */
+.card.em-breve {
+  opacity: 0.75;
+}
+
+footer {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+  font-size: .85rem;
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .mobile-menu-btn { display: block; }
+    header h1 { font-size: 2.2rem; }
+}
+</style>
 </head>
 
 <body>
 
-  <nav>
-    <a href="#home">Página Inicial</a>
-    <a href="#termos">Termos</a>
-    <a href="#contato">Contato</a>
-    <a href="https://discord.gg/csEcMBd9Gf" target="_blank">Servidor</a>
-    
-    <hr>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <i class="fa-solid fa-moon"></i>
+      Nova Community
+    </a>
 
-    <!-- Menu de Jogos -->
-    <a href="#gi">Genshin Impact</a>
-    <a href="#hsr">Honkai: Star Rail</a>
-    <a href="#zzz">Zenless Zone Zero</a>
-    <a href="#wuwa">Wuthering Waves</a>
-  </nav>
-
-  <main>
-    <header id="home">
-      <img src="https://64.media.tumblr.com/a17d8adeaaa5cefc2d690c81c325966f/e5278ae8b7ef6804-0b/s1280x1920/a462b421519bff4f7b066353e011a088d8119de4.pnj" alt="Nova Community Logo" class="hero-img"/>
-      <h1 class="hero-title">Nova Community<br><span>Loja Premium</span> de GI, HSR, ZZZ e WUWA</h1>
-    </header>
-
-    <!-- Genshin Impact -->
-    <div id="gi">
-     <h2>Genshin Impact</h2>
-      <h2>Giros</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>800 gemas - 05 Giros – R$ 6,00 (2 dias)</p>
-          <p>1.600 gemas - 10 Giros – R$ 12,00 (4 dias)</p>
-          <p>3.200 gemas - 20 Giros – R$ 24,00 (7 dias)</p>
-          <p>4.800 gemas - 30 Giros – R$ 36,00 (12 dias)</p>
-          <p>6.400 gemas - 40 Giros – R$ 48,00 (16 dias)</p>
-          <p>8.000 gemas - 50 Giros – R$ 60,00 (20 dias)</p>
-
-        </div>
-        <div class="card">
-          <h3>Script</h3>
-         <p>800 gemas - 05 Giros – R$ 5,00 (1 dia)</p>
-        <p>1.600 gemas - 10 Giros – R$ 11,00 (1 dia)</p>
-        <p>3.200 gemas - 20 Giros – R$ 23,00 (2 dias)</p>
-        <p>4.800 gemas - 30 Giros – R$ 35,00 (2 dias)</p>
-        <p>6.400 gemas - 40 Giros – R$ 47,00 (4 dias)</p>
-        <p>8.000 gemas - 50 Giros – R$ 57,00 (4 dias)</p>
-
-        </div>
-      </div>
-
-      <!-- Missões -->
-      <h2>Missões</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Lendária/Personagens/Encontros – R$ 6,50 (1 dia)</p>
-          <p>Missão 76 Aranaras – R$ 45,00 (7 dias)</p>
-          <p>Mondstadt – R$ 10,00 (7 dias)</p>
-          <p>Liyue – R$ 20,00 (7 dias)</p>
-          <p>Inazuma – R$ 35,00 (7 dias)</p>
-          <p>Sumeru – R$ 60,00 (7 dias)</p>
-          <p>Fontaine – R$ 60,00 (7 dias)</p>
-          <p>Natlan – R$ 65,00 (7 dias)</p>
-          <p>Nod-Krai – R$ 50,00 (7 dias)</p>
-        </div>
-        <div class="card">
-          <h3>Script</h3>
-          <p>Lendária/Personagens/Encontros – R$ 5,00 (1 dia)</p>
-          <p>Missão 76 Aranaras – R$ 25,00 (1 dia)</p>
-          <p>Mondstadt – R$ 5,00 (1 dia)</p>
-          <p>Liyue – R$ 15,00 (1 dia)</p>
-          <p>Inazuma – R$ 20,00 (1 dia)</p>
-          <p>Sumeru – R$ 25,00 (1 dia)</p>
-          <p>Fontaine – R$ 30 (1 dia)</p>
-          <p>Natlan – R$ 35,00 (1 dia)</p>
-          <p>Nod-Krai – R$ 40,00 (1 dia)</p>
-        </div>
-      </div>
-
-      <!-- Upgrades -->
-      <h2>Upgrades</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual/Script</h3>
-          <p>Farm-pers. lvl20-90 – R$ 15,00 (Sem prazo)</p>
-          <p>Up/Arma lvl20-90 – R$ 15,00 (Sem prazo)</p>
-          <p>Farm 01 Set – R$ 2,00 (1 hora)</p>
-          <p>Farm 50 unid. Itens – R$ 1,00 cada (1 hora)</p>
-        </div>
-      </div>
-
-      <!-- Abismo -->
-      <h2>Abismo</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Cada Piso – R$ 2,50 (3 dias)</p>
-          <p>Piso 01–08 – R$ 18,00 (3 dias)</p>
-          <p>Lua Abissal – R$ 10,00 (3 dias)</p>
-        </div>
-        <div class="card">
-          <h3>Script</h3>
-          <p>Cada Piso – R$ 1,00 (1 hora)</p>
-          <p>Piso 01–08 – R$ 6,50 (1 hora)</p>
-          <p>Lua Abissal – R$ 8,00 (1 hora)</p>
-        </div>
-      </div>
-
-      <!-- Teatro -->
-      <h2>Teatro</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Fácil – R$ 5,00 (2 horas)</p>
-          <p>Médio – R$ 10,00 (3/4 horas)</p>
-          <p>Difícil – R$ 15,00 (1 dia)</p>
-          <p>Visionário – R$ 20,00 (3 dias)</p>
-          <p>Lunar – R$ 25,00 (4 dias)</p>
-        </div>
-        <div class="card">
-          <h3>Script</h3>
-          <p>Fácil – R$ 3,00 (1 hora)</p>
-          <p>Médio – R$ 7,00 (1/2 horas)</p>
-          <p>Difícil – R$ 10,00 (2 horas)</p>
-          <p>Visionário – R$ 13,00 (2/3 horas)</p>
-          <p>Lunar – R$ 17,00 (3 horas)</p>
-        </div>
-      </div>
-
-      <!-- Oculis -->
-      <h2>Oculis</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Anemoculus – R$ 15 (3 dias)</p>
-          <p>Geoculus – R$ 25 (7 dias)</p>
-          <p>Eletroculus – R$ 40 (7 dias)</p>
-          <p>Dendroculus (Floresta) – R$ 40 (10 dias)</p>
-          <p>Dendroculus (Deserto) – R$ 40 (12 dias)</p>
-          <p>Hydroculus – R$ 50 (12 dias)</p>
-          <p>Pyroculus – R$ 60 (15 dias)</p>
-          <p>Lunoculus – R$ 25 (4 dias)</p>
-        </div>
-        <div class="card">
-          <h3>Script</h3>
-          <p>Anemoculus – R$ 10 (1 dia)</p>
-          <p>Geoculus – R$ 20 (2 dias)</p>
-          <p>Eletroculus – R$ 25 (3 dias)</p>
-          <p>Dendroculus (Floresta) – R$ 30 (4 dias)</p>
-          <p>Dendroculus (Deserto) – R$ 30 (4 dias)</p>
-          <p>Hydroculus – R$ 30 (4 dias)</p>
-          <p>Pyroculus – R$ 40 (4 dias)</p>
-          <p>Lunoculus – R$ 10 (1 dia)</p>
-        </div>
-      </div>
+    <div class="nav-links">
+      <a href="index.html" class="active">Início</a>
+      <a href="#">Como Comprar</a>
+      <a href="#">Termos de Compra</a>
+      <a href="#">SITE EM MANUTENÇÃO!</a>
     </div>
 
-    <!-- Honkai: Star Rail -->
-    <div id="hsr">
-      <h2>Honkai: Star Rail</h2>
-      <h2>Stellar Jade</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>800 Stellar (5 pulls) – R$ 8 – 1 dia</p>
-          <p>1.600 Stellar (10 pulls) – R$ 12 – 2 dias</p>
-          <p>3.200 Stellar (20 pulls) – R$ 24 – 4 dias</p>
-          <p>4.800 Stellar (30 pulls) – R$ 36 – 6 dias</p>
-          <p>8.000 Stellar (50 pulls) – R$ 48 – 8 dias</p>
- 
-        </div>
-      </div>
+    <button class="mobile-menu-btn" onclick="alert('Menu em breve!')">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</nav>
 
-      <!-- Missões -->
-      <h2>Cuidados com a Conta</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>R$ 3 – 1 Dia</p>
-          <p>R$ 15 – 1 Semana</p>
-          <p>R$ 30 – 1 Mês</p>
-          <p>R$ 50 – 1 Versão</p>
+<header>
+  <h1>Nova Community</h1>
+  <p>Catálogo oficial da loja</p>
+</header>
 
-        </div>
-      </div>
+<section class="catalogo">
+<div class="grid">
 
-      <!-- Upgrades -->
-      <h2>End Games</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>R$ 20 – MOC – 1 dia</p>
-          <p>R$ 40 – Sombra AP – 1 dia</p>
-          <p>R$ 60 – Pura Ficção – 1 dia</p>
-          <p>R$ 100 – Arbitragem de Anomalias – 1 dia</p>
-
-        </div>
-      </div>
-
-      <!-- Abismo -->
-      <h2>Explorações 100%</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Nave da Herta – R$ 10 – 1 dia</p>
-          <p>Jarilo-VI – R$ 20 – 1 dia</p>
-          <p>Xianzhou – R$ 35 – 2 dias</p>
-          <p>Penacony – R$ 50 – 3 dias</p>
-          <p>Amphoreus – R$ 45 – 5 dias</p>
-
-        </div>
-      </div>
-
-      <!-- Teatro -->
-      <h2>Coleta</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Pássaros de Origami – R$ 35 – 2 dias</p>
-          <p>Ninfas – R$ 5 a cada 10 Ninfas – 5 dias</p>
-
-        </div>
-      </div>
-
-      <!-- Oculis -->
-      <h2>Missões</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Missão de Desbravamento – R$ 10 cada ato – 1 dia cada ato</p>
-          <p>Desbravamento (completo) – R$ 40 – 3 dias</p>
-          <p>Missão Companheiro – R$ 10 – 1 dia</p>
-        </div>
+  <div class="card">
+    <div class="image-wrap">
+      <img src="https://i.ytimg.com/vi/WvUxzNW0X4I/maxresdefault.jpg" alt="Genshin Impact">
+    </div>
+    <div class="card-content">
+      <h3>Genshin Impact</h3>
+      <div class="status disponivel">Disponível</div>
+      <p class="info">Serviços Premium de Genshin Impact.</p>
+      <div class="card-footer">
+        <span class="preco">R$ 00,00</span>
+        <a href="#" class="btn-acao btn-ver-mais">Ver Mais</a>
       </div>
     </div>
+  </div>
 
-      <!-- Oculis -->
-      <h2>Ascensões</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Personagem – R$ 10 – 1 dia</p>
-          <p>Rastro – R$ 15 – 1 dia</p>
-          <p>Cone de Luz – R$ 15 – 1 dia</p>
-
-        </div>
+  <div class="card">
+    <div class="image-wrap">
+      <img src="https://onpoplife.com.br/wp-content/uploads/2025/12/2.5-kv-capa.jpg" alt="Zenless Zone Zero">
+    </div>
+    <div class="card-content">
+      <h3>Zenless Zone Zero</h3>
+      <div class="status disponivel">Disponível</div>
+      <p class="info">Serviços Premium de Zenless Zone Zero.</p>
+      <div class="card-footer">
+        <span class="preco">R$ 00,00</span>
+        <a href="#" class="btn-acao btn-ver-mais">Ver Mais</a>
       </div>
     </div>
+  </div>
 
-    <!-- Oculis -->
-      <h2>Conteúdos</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Universo Simulado Inteiro (cada mundo) – R$ 50 – 2 dias</p>
-          <p>Universo Simulado Semanal (cada mundo) – R$ 15 – 1 dia</p>
-          <p>Universo do Enxame – R$ 35 – 3 dias</p>
-          <p>Universo do Ouro e Engrenagem – R$ 35 – 3 dias</p>
-          <p>Universo Domínio Incógnito – R$ 35 – 2 dias</p>
-          <p>Universo Divergente (Amphoreus) Inteiro – R$ 25 – 3 dias</p>
-          <p>Universo Divergente (Amphoreus) Semanal – R$ 15 – 1 dia</p>
-          <p>Guerras Monetárias – R$ 20 – 3 dias</p>
-
-
-        </div>
+  <div class="card">
+    <div class="image-wrap">
+      <img src="https://webstatic.hoyoverse.com/upload/op-public/2023/09/14/3c862d085db721a5625b6e12649399bc_8067514115196038699.png" alt="Honkai: Star Rail">
+    </div>
+    <div class="card-content">
+      <h3>Honkai: Star Rail</h3>
+      <div class="status disponivel">Disponível</div>
+      <p class="info">Serviços Premium de Honkai: Star Rail.</p>
+      <div class="card-footer">
+        <span class="preco">R$ 00,00</span>
+        <a href="#" class="btn-acao btn-ver-mais">Ver Mais</a>
       </div>
     </div>
+  </div>
 
-    <!-- Zenless Zone Zero -->
-    <div id="zzz">
-      <h2>Zenless Zone Zero</h2>
-      <h2>Policromos</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>800 policromios — 5 giros — R$ 9,00 - até 1 dia.</p>
-          <p>1.600 policromios — 10 giros — R$ 14,00 - até 2 dias.</p>
-          <p>3.200 policromios — 20 giros — R$ 24,00 - até 3 dias.</p>
-          <p>4.800 policromios — 30 giros — R$ 34,00 - de 4 a 5 dias.</p>
-          <p>6.400 policromios — 40 giros — R$ 44,00 - até 5 dias.</p>
-          <p>8.000 policromios — 50 giros — R$ 54,00 - de 6 a 7 dias.</p>
-        </div>
-      </div>
-
-      <!-- Missões -->
-      <h2>Missões</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Missão completa (9 capítulos) - R$ 70,00 - de 3 a 4 dias.</p>
-          <p>Apenas 1 capítulo - R$ 10,00 - até 1 dia.</p>
-          <p>Missão secundária (cada uma) - R$ 2,00 - de 1 a 2 dias.</p>
-        </div>
-      </div>
-
-      <!-- Upgrades -->
-      <h2>Histórias dos Agentes</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Todas as 18 histórias - R$ 55,00 - de 2 a 3 dias.</p>
-          <p>1 história - R$ 5,00 - até 1 dia.</p>
-        </div>
-      </div>
-
-      <!-- Abismo -->
-      <h2>End Games</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Nódulo Estável (Nível 1 ao 10) – R$ 15,00 – de 1 a 2 dias</p>
-          <p>Nódulo de Conflito (Nível 1 ao 8) – R$ 13,00 – de 1 a 2 dias</p>
-          <p>Nódulo Crítico (Nível 1 ao 7) – R$ 12,00 – até 1 dia</p>
-          <p>Investida Mortal – R$ 20,00 – de 1 a 2 dias</p>
-          <p>Teste de Combate Virtual (por Nível) – R$ 2,00 – de 10 a 15 minutos</p>
-          <p>Teste de Combate: Sem Saída (por Nível) – R$ 3,00 – de 10 a 15 minutos</p>
-
-
-        </div>
-      </div>
-
-      <!-- Teatro -->
-      <h2>Cidade Definhada</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Área 01 – Metrô da Velha Capital – R$ 10,00 – de 30 a 45 minutos</p>
-          <p>Área 02 – Ruínas da Construção – R$ 10,00 – de 30 a 60 minutos</p>
-          <p>Área 03 – Ruínas do Edifício Gigante – R$ 10,00 – de 10 a 15 minutos</p>
-          <p>Canteiro Definhado – R$ 15,00 – até 1 dia</p>
-          <p>Colheita Ardente – R$ 15,00 – até 1 dia</p>
-
-
-        </div>
-      </div>
-
-      <!-- Oculis -->
-      <h2>Vazio Perdido</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Extermínio da Linha de Frente (até o Nível Máximo) – R$ 15,00 – até 1 dia</p>
-          <p>Aniquilação dos Transgressores (todos os Níveis) – R$ 5,00 – de 30 a 60 minutos</p>
-          <p>Operação de Reconstituição – R$ 15,00 – até 1 dia</p>
-
-        </div>
+  <div class="card">
+    <div class="image-wrap">
+      <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/05/wuthering_waves_banner_schedule.jpg" alt="Wuthering Waves">
+    </div>
+    <div class="card-content">
+      <h3>Wuthering Waves</h3>
+      <div class="status disponivel">Disponível</div>
+      <p class="info">Serviços Premium de Wuthering Waves.</p>
+      <div class="card-footer">
+        <span class="preco">R$ 00,00</span>
+        <a href="#" class="btn-acao btn-ver-mais">Ver Mais</a>
       </div>
     </div>
+  </div>
 
-      <!-- Oculis -->
-      <h2>Cuidados com a Conta</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Diário – R$ 2,00 – até 1 dia</p>
-          <p>Semanal – R$ 15,00 – até 7 dias</p>
-          <p>Por Versão – R$ 50,00 – indefinido (depende da versão do jogo)</p>
-
-          <p>(Diárias, gasto de bateria diária e passe)</p>
-
-
-        </div>
+  <div class="card em-breve">
+    <div class="image-wrap">
+      <img src="https://endfield.wiki.gg/images/Arknights_Endfield_Cover_Art.png" alt="Arknights">
+    </div>
+    <div class="card-content">
+      <h3>Arknights: Endfield</h3>
+      <div class="status em-breve">Em breve</div>
+      <p class="info">Serviços premium chegando em breve para este título.</p>
+      <div class="card-footer">
+        <span class="preco">---</span>
+        <span class="btn-acao btn-bloqueado">Bloqueado</span>
       </div>
     </div>
+  </div>
 
-    <!-- Oculis -->
-      <h2>Eventos</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Todos os Eventos (versão) – R$ 20,00 – indefinido (depende da versão do jogo)</p>
-          <p>Eventos Menores (versão) – R$ 5,00 – indefinido (depende da versão do jogo)</p>
-        </div>
+  <div class="card em-breve">
+    <div class="image-wrap">
+      <img src="https://img.game8.co/4294980/a3758b24003c046ca453fe12e1af9dd0.jpeg/show" alt="Duet Night Abyss">
+    </div>
+    <div class="card-content">
+      <h3>Duet Night Abyss</h3>
+      <div class="status em-breve">Em breve</div>
+      <p class="info">Serviços premium chegando em breve para este título.</p>
+      <div class="card-footer">
+        <span class="preco">---</span>
+        <span class="btn-acao btn-bloqueado">Bloqueado</span>
       </div>
     </div>
+  </div>
 
-    <!-- Oculis -->
-      <h2>Livro Miau</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Por Área – R$ 15,00 – até 1 dia</p>
-          <p>1 Página – R$ 6,00 – de 2 a 3 horas</p>
-        </div>
-      </div>
-    </div>
+</div>
+</section>
 
-    <!-- Oculis -->
-      <h2>BangBoo</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Manual</h3>
-          <p>Cada Nível - 2 R$ - até 2 dias.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Wuthering Waves -->
-    <div id="wuwa">
-      <h2>Wuthering Waves</h2>
-      <p>Espaço reservado para adicionar códigos e serviços do WUWA. Em breve na Tabela.</p>
-    </div>
-
-    <!-- Termos -->
-    <div id="termos" class="terms">
-      <h3>Pagamentos e Início do Serviço</h3>
-      <p>O prazo padrão para inicialização do serviço é de até 48 horas após a confirmação do pagamento.
-     Durante períodos de alta demanda, pedimos paciência. Pressões ou cobranças indevidas não serão toleradas.
-     O tempo pode variar conforme a complexidade do pedido, e solicitações fora do prazo não garantem prioridade.</p>
-      <h3>Reembolsos e Arrependimentos</h3>
-      <p>Arrependimentos e mudanças de ideia não são reembolsáveis.
-      Reembolsos só serão considerados em casos de falha comprovada por parte da equipe e após análise interna.
-      Tentativas de forçar reembolso, realizar ameaças, ou causar transtornos resultarão em bloqueio permanente e perda de acesso a serviços futuros.
-      </p>
-      <h3>Atendimento e Suporte</h3>
-      <p>O atendimento ocorre exclusivamente via tickets do Discord.
-     Mensagens privadas à equipe serão ignoradas sem exceção.
-     Os atendimentos são feitos por ordem de chegada, sem favoritismos.
-     espeite o tempo da equipe — qualquer forma de desrespeito pode resultar em encerramento do atendimento.</p>
-      <h3>Execução e Entrega</h3>
-      <p>A Nova Community se compromete a entregar exatamente o que foi solicitado e pago.
-     Caso o cliente não envie as informações necessárias para execução, o prazo será suspenso até regularização.
-     Entregas parciais não significam falha — algumas etapas podem ser feitas em fases separadas.
-     Alterações pós-entrega podem gerar custo adicional.</p>
-      <h3>Conduta e Respeito</h3>
-      <p>O respeito à equipe é obrigatório.
-    Linguagem ofensiva, sarcasmo excessivo, spam ou ironias serão tratadas como falta de respeito.
-    A Nova Community reserva o direito de recusar atendimento a qualquer cliente que descumpra os princípios básicos de convivência.</p>
-      <h3>Responsabilidade do Comprador</h3>
-      <p>Ao adquirir qualquer serviço da Nova Community, o cliente concorda que o processo de execução envolve o uso de ferramentas que podem apresentar riscos à conta utilizada
-        Caso ocorra qualquer tipo de punição, bloqueio, erro ou banimento decorrente desse uso, a responsabilidade é integralmente do comprador.
-      A Nova Community não se responsabiliza por perdas, danos ou penalidades aplicadas pela plataforma, nem oferece reembolso ou compensação em situações desse tipo.</p>
-      <h3>Alterações nos Termos</h3>
-      <p>Os termos podem ser atualizados a qualquer momento, sem aviso prévio.
-     A versão válida e aplicável será sempre a mais recente publicada oficialmente.
-      É responsabilidade do cliente manter-se informado sobre as atualizações.</p>
-    </div>
-
-    <!-- Contato -->
-    <footer id="contato">
-      <p>Contato oficial:</p>
-      <p>Discord: @wz.foxyyy</p>
-      <p>Telefone: 67 99338‑2426</p>
-      <p><a href="https://discord.gg/csEcMBd9Gf">Servidor: discord.gg/csEcMBd9Gf</a></p>
-      <p>➤﹕NF2U/Don't repost or inspo | Website by @wz.foxyyy on dc.</p>
-    </footer>
+<footer>
+© 2026 Nova Community. Todos os Direitos Reservados.
+</footer>
 
 </body>
 </html>
