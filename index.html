@@ -10,15 +10,19 @@
 
 <style>
 :root {
-  --bg-main: #0b0b10;
-  --bg-card: #14141c;
-  --pink: #ff2fa6;
-  --purple: #7b5cff;
-  --text-main: #f2f2f7;
-  --text-muted: #b5b5c5;
-  --green: #2ecc71;
-  --red: #ff3b3b;
-  --btn-dark: #2a2a35; /* Cor do botão bloqueado */
+  --bg-body: #050505;
+  --bg-card: #0f0f10;
+  --bg-footer: #000000;
+  
+  --purple-start: #d946ef;
+  --purple-end: #8b5cf6;
+  
+  --text-main: #ffffff;
+  --text-muted: #71717a;
+  
+  --green: #22c55e;
+  --red: #ef4444;
+  --btn-blocked: #27272a;
 }
 
 * {
@@ -29,22 +33,23 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #1a1333, var(--bg-main));
+  background-color: var(--bg-body);
   color: var(--text-main);
   line-height: 1.6;
 }
 
-/* --- NAVBAR (Estilo Glass Transparente) --- */
+/* --- NAVBAR --- */
 .navbar {
-  background: rgba(10, 10, 10, 0.6); /* Transparência ajustada */
-  backdrop-filter: blur(6px); /* Blur diminuído para ver o fundo */
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 20px;
+  background: rgba(10, 10, 10, 0.4); 
+  backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px); 
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .nav-container {
@@ -59,15 +64,18 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 1.4rem;
+  gap: 12px;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text-main);
   text-decoration: none;
+  letter-spacing: 0.5px;
 }
 
-.logo i {
-  color: var(--pink);
+.logo img {
+  height: 35px;
+  width: auto;
+  border-radius: 50%;
 }
 
 .nav-links {
@@ -79,12 +87,12 @@ body {
   text-decoration: none;
   color: var(--text-muted);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: color 0.3s;
 }
 
 .nav-links a:hover, .nav-links a.active {
-  color: var(--pink);
+  color: var(--text-main);
 }
 
 .mobile-menu-btn {
@@ -99,53 +107,66 @@ body {
 /* --- HEADER --- */
 header {
   text-align: center;
-  padding: 8.5rem 1rem 3rem; 
+  padding: 14rem 1rem 10rem; 
+  background: 
+    linear-gradient(to bottom, rgba(5, 5, 5, 0.3), var(--bg-body)),
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+    url('https://64.media.tumblr.com/ed7adca38a68e6fe93785e505141f1e5/3bd2cde9f57de20a-06/s2048x3072/bc23fb41455e35251109dd937e5cc071bdf78da5.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
 header h1 {
-  font-size: 2.8rem;
-  background: linear-gradient(135deg, var(--pink), var(--purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 10px;
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
 header p {
   color: var(--text-muted);
-  margin-top: .5rem;
+  font-size: 1.1rem;
 }
 
 /* --- CATÁLOGO & CARDS --- */
 .catalogo {
-  padding: 3rem 6%;
+  padding: 0 6% 6rem;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: -4rem auto 0;
+  position: relative;
+  z-index: 2;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
+/* CARD ESTILO BASE */
 .card {
   background: var(--bg-card);
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 0 30px rgba(0,0,0,.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 40px rgba(255,47,166,0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .image-wrap {
   position: relative;
   overflow: hidden;
-  height: 175px;
+  height: 180px;
 }
 
 .card img {
@@ -156,7 +177,7 @@ header p {
 }
 
 .card:hover img {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 .card-content {
@@ -167,33 +188,42 @@ header p {
 }
 
 .card-content h3 {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
+  color: #fff;
 }
 
-/* STATUS */
 .status {
-  font-size: .85rem;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: 6px;
   margin-bottom: 1rem;
+  font-weight: 500;
 }
 
 .status::before {
-  content: "●";
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
 }
 
 .status.disponivel { color: var(--green); }
+.status.disponivel::before { background-color: var(--green); }
+
 .status.em-breve { color: var(--red); }
+.status.em-breve::before { background-color: var(--red); }
 
 .info {
   font-size: 0.9rem;
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
 }
 
-/* RODAPÉ DO CARD */
 .card-footer {
   display: flex;
   justify-content: space-between;
@@ -202,53 +232,308 @@ header p {
 }
 
 .preco {
-  font-size: 1.15rem;
-  color: var(--text-main);
+  font-size: 1.2rem;
+  color: #fff;
   font-weight: 700;
 }
 
-/* BOTÕES */
 .btn-acao {
   text-decoration: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 10px;
-  font-size: 0.85rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
   font-weight: 600;
   transition: all 0.2s ease;
   color: white;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .btn-ver-mais {
-  background: linear-gradient(135deg, var(--pink), var(--purple));
+  background: linear-gradient(90deg, var(--purple-start), var(--purple-end));
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
 }
 
 .btn-ver-mais:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(255, 47, 166, 0.4);
+  filter: brightness(1.1);
+  transform: translateY(-1px);
 }
 
 .btn-bloqueado {
-  background: var(--btn-dark);
+  background: var(--btn-blocked);
+  color: #555;
   cursor: not-allowed;
-  opacity: 0.8;
 }
 
-/* CARD EM BREVE */
-.card.em-breve {
-  opacity: 0.75;
-}
-
+/* --- FOOTER --- */
 footer {
-  text-align: center;
-  padding: 4rem 2rem;
+  background-color: var(--bg-footer);
+  padding: 4rem 0 2rem;
   color: var(--text-muted);
-  font-size: .85rem;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 6%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.footer-brand {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-brand h4 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-brand h4 img {
+  height: 30px;
+  border-radius: 50%;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+.social-btn {
+  background: #111;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: 0.3s;
+  border: 1px solid #222;
+}
+
+.social-btn:hover {
+  background: #222;
+  color: #fff;
+  border-color: #333;
+}
+
+.footer-links-group {
+  display: flex;
+  gap: 4rem;
+}
+
+.footer-column h5 {
+  color: #fff;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.footer-column ul li a:hover {
+  color: #fff;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0a0a0a;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #222;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--green);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding: 2rem 6% 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.build-version {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+}
+
+.dot-purple {
+  width: 6px;
+  height: 6px;
+  background-color: var(--purple-end);
+  border-radius: 50%;
+}
+
+/* =========================================
+   CSS ADICIONAL PARA O OVERLAY (TELA NOVA)
+   ========================================= */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 5, 0.95);
+  display: none;
+  z-index: 9999;
+  overflow-y: auto;
+  backdrop-filter: blur(5px);
+}
+
+.overlay.active {
+  display: block;
+}
+
+.overlay-header {
+  display: flex;
+  justify-content: flex-end; /* Botão fechar na direita */
+  align-items: center;
+  padding: 1.5rem 6%;
+  position: sticky;
+  top: 0;
+  background: transparent;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.overlay-header .close-btn {
+  pointer-events: auto;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.overlay-header .close-btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.overlay-content {
+  padding: 0 6% 4rem;
+  max-width: 700px;
+  margin: auto;
+  margin-top: -2rem; /* Sobe levemente */
+}
+
+/* Ajustes Específicos do Card dentro do Overlay */
+.overlay-top-card {
+  width: 100%;
+  margin-bottom: 2rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  cursor: default;
+}
+.overlay-top-card .image-wrap {
+  height: 220px;
+}
+
+/* Divisor */
+.overlay-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  margin: 2rem 0;
+  width: 100%;
+}
+
+/* Estilo das Listas (Tabelas) */
+.section-wrapper {
+  margin-bottom: 2rem; /* Espaço entre as listas */
+}
+
+.section-title {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  padding-left: 5px;
+  border-left: 3px solid var(--purple-start);
+  line-height: 1.2;
+}
+
+.price-table {
+  background: #0f0f10;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.price-row:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+.price-row:last-child {
+  border-bottom: none;
+}
+
+.price-row span:last-child {
+  font-weight: 700;
+  color: var(--purple-start);
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .mobile-menu-btn { display: block; }
-    header h1 { font-size: 2.2rem; }
+  .nav-links { display: none; }
+  .mobile-menu-btn { display: block; }
+  .footer-links-group { flex-direction: column; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
 }
 </style>
 </head>
@@ -258,7 +543,7 @@ footer {
 <nav class="navbar">
   <div class="nav-container">
     <a href="index.html" class="logo">
-      <i class="fa-solid fa-moon"></i>
+      <img src="https://64.media.tumblr.com/a17d8adeaaa5cefc2d690c81c325966f/e5278ae8b7ef6804-0b/s1280x1920/a462b421519bff4f7b066353e011a088d8119de4.png" alt="Logo">
       Nova Community
     </a>
 
@@ -266,7 +551,7 @@ footer {
       <a href="index.html" class="active">Início</a>
       <a href="#">Como Comprar</a>
       <a href="#">Termos de Compra</a>
-      <a href="#">SITE EM MANUTENÇÃO!</a>
+      <a href="#">SITE EM MANUTENÇÃO!!</a>
     </div>
 
     <button class="mobile-menu-btn" onclick="alert('Menu em breve!')">
@@ -277,7 +562,7 @@ footer {
 
 <header>
   <h1>Nova Community</h1>
-  <p>Catálogo oficial da loja</p>
+  <p>Catálogo oficial de serviços e contas</p>
 </header>
 
 <section class="catalogo">
@@ -288,15 +573,15 @@ footer {
       <img src="https://i.ytimg.com/vi/WvUxzNW0X4I/maxresdefault.jpg" alt="Genshin Impact">
     </div>
     <div class="card-content">
-      <h3>Genshin Impact</h3>
+      <h3>Genshin Impact: Manual</h3>
       <div class="status disponivel">Disponível</div>
       <p class="info">Serviços Premium de Genshin Impact.</p>
       <div class="card-footer">
-        <span class="preco">R$ 00,00</span>
-        <a href="#" class="btn-acao btn-ver-mais">Ver Mais</a>
+        <span class="preco">R$ 1,00</span>
+        <a onclick="openOverlay('genshin')" class="btn-acao btn-ver-mais">Ver Mais</a>
       </div>
     </div>
-  </div>
+  </div> 
 
   <div class="card">
     <div class="image-wrap">
@@ -308,14 +593,14 @@ footer {
       <p class="info">Serviços Premium de Zenless Zone Zero.</p>
       <div class="card-footer">
         <span class="preco">R$ 00,00</span>
-        <a href="#" class="btn-acao btn-ver-mais">Ver Mais</a>
+        <a onclick="openOverlay('zzz')" class="btn-acao btn-ver-mais">Ver Mais</a>
       </div>
     </div>
   </div>
 
   <div class="card">
     <div class="image-wrap">
-      <img src="https://webstatic.hoyoverse.com/upload/op-public/2023/09/14/3c862d085db721a5625b6e12649399bc_8067514115196038699.png" alt="Honkai: Star Rail">
+      <img src="https://webstatic.hoyoverse.com/upload/op-public/2023/09/14/3c862d085db721a5625b6e12649399bc_8067514115196038699.png" alt="Honkai">
     </div>
     <div class="card-content">
       <h3>Honkai: Star Rail</h3>
@@ -323,14 +608,14 @@ footer {
       <p class="info">Serviços Premium de Honkai: Star Rail.</p>
       <div class="card-footer">
         <span class="preco">R$ 00,00</span>
-        <a href="#" class="btn-acao btn-ver-mais">Ver Mais</a>
+        <a onclick="openOverlay('hsr')" class="btn-acao btn-ver-mais">Ver Mais</a>
       </div>
     </div>
   </div>
 
   <div class="card">
     <div class="image-wrap">
-      <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/05/wuthering_waves_banner_schedule.jpg" alt="Wuthering Waves">
+      <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/05/wuthering_waves_banner_schedule.jpg" alt="WuWa">
     </div>
     <div class="card-content">
       <h3>Wuthering Waves</h3>
@@ -338,7 +623,7 @@ footer {
       <p class="info">Serviços Premium de Wuthering Waves.</p>
       <div class="card-footer">
         <span class="preco">R$ 00,00</span>
-        <a href="#" class="btn-acao btn-ver-mais">Ver Mais</a>
+        <a onclick="openOverlay('wuwa')" class="btn-acao btn-ver-mais">Ver Mais</a>
       </div>
     </div>
   </div>
@@ -360,7 +645,7 @@ footer {
 
   <div class="card em-breve">
     <div class="image-wrap">
-      <img src="https://img.game8.co/4294980/a3758b24003c046ca453fe12e1af9dd0.jpeg/show" alt="Duet Night Abyss">
+      <img src="https://img.game8.co/4294980/a3758b24003c046ca453fe12e1af9dd0.jpeg/show" alt="Duet">
     </div>
     <div class="card-content">
       <h3>Duet Night Abyss</h3>
@@ -377,8 +662,550 @@ footer {
 </section>
 
 <footer>
-© 2026 Nova Community. Todos os Direitos Reservados.
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h4>
+        <img src="https://64.media.tumblr.com/a17d8adeaaa5cefc2d690c81c325966f/e5278ae8b7ef6804-0b/s1280x1920/a462b421519bff4f7b066353e011a088d8119de4.png" alt="Logo">
+        NOVA COMMUNITY
+      </h4>
+      <div class="social-icons">
+        <a href="https://discord.gg/Szqbsd4TNa" class="social-btn"><i class="fa-brands fa-discord"></i></a>
+        <a href="https://www.tiktok.com/@novacommunitydc" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/novacommunitydc/" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-links-group">
+      <div class="footer-column">
+        <h5>CONTATOS</h5>
+        <ul>
+          <li><a href="https://discord.gg/Szqbsd4TNa">Servidor do Discord</a></li>
+          <li><a href="#">WhatsApp (Indisponível no Momento...)</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h5>USE AGORA</h5>
+        <ul>
+          <li><a href="https://discord.com/channels/1404336816563159111/1404503231245193376">Tickets</a></li>
+          <li><a href="https://discord.com/channels/1404336816563159111/1447372774313168898">Feedbacks e Proofs</a></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <a href="#" class="status-badge">
+        <span class="status-dot"></span>
+        STATUS
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>
+      <p>© 2025–2026 NOVA COMMUNITY.</p>
+      <p style="font-size: 0.75rem; color: #444; margin-top: 5px;">Nova Community. Todos os Direitos Reservados.</p>
+    </div>
+    <div class="build-version">
+      <span class="dot-purple"></span>
+      V1.0.0
+    </div>
+  </div>
 </footer>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-header">
+    <button class="close-btn" onclick="closeOverlay()">✕</button>
+  </div>
+  <div class="overlay-content" id="overlayContent">
+    </div>
+</div>
+
+<script>
+// --- CONFIGURAÇÃO DOS PRODUTOS E LISTAS ---
+// Para criar novas listas, basta adicionar um bloco { title: "...", items: [...] } dentro de "sections"
+const produtos = {
+  genshin: {
+    title: "Genshin Impact: Manual — Serviços",
+    img: "https://i.ytimg.com/vi/WvUxzNW0X4I/maxresdefault.jpg",
+    desc: "Serviços Premium de Genshin Impact.",
+    status: "Disponível",
+    statusClass: "disponivel",
+    // AQUI VOCÊ EDITA AS LISTAS DO GENSHIN
+    sections: [
+      {
+        title: "Giros — Exploração Baixa (Abaixo de 70%)",
+        items: [
+          { name: "800 Gemas (05 giros)", price: "R$ 6,00" },
+          { name: "1.600 Gemas (10 giros)", price: "R$ 12,00" },
+          { name: "3.200 Gemas (20 giros)", price: "R$ 23,00" },
+          { name: "4.800 Gemas (30 giros)", price: "R$ 34,00" },
+          { name: "6.400 Gemas (40 giros)", price: "R$ 44,00" },
+          { name: "8.000 Gemas (50 giros)", price: "R$ 54,00" }
+        ]
+      },
+      {
+        title: "Giros — Exploração Baixa (Acima de 70%)",
+        items: [
+          { name: "800 Gemas (05 giros)", price: "R$ 7,00" },
+          { name: "1.600 Gemas (10 giros)", price: "R$ 14,00" },
+          { name: "3.200 Gemas (20 giros)", price: "R$ 26,00" },
+          { name: "4.800 Gemas (30 giros)", price: "R$ 37,00" },
+          { name: "6.400 Gemas (40 giros)", price: "R$ 48,00" },
+          { name: "8.000 Gemas (50 giros)", price: "R$ 65,00" }
+        ]
+      },
+      {
+        title: "Ascenção",
+        items: [
+          { name: "Farm Pers. lvl 20–90", price: "R$ 15,00" },
+          { name: "Up Arma lvl 20–90", price: "R$ 15,00" },
+          { name: "Farm 01 set (status aleatórios)", price: "R$ 2,00" },
+          { name: "Talentos 1→9", price: "R$ 15,00" },
+          { name: "Talentos 9/9/9", price: "R$ 35,00" }
+        ]
+      },
+      {
+        title: "Missão",
+        items: [
+          { name: "Lendária / Personagens / Encontros", price: "R$ 5,00" },
+          { name: "Missão 76 Aranaras", price: "R$ 45,00" },
+          { name: "Arconte", price: "(cada ato) R$ 10,00" }
+        ]
+      },
+      {
+        title: "Abismo do Espiral",
+        items: [
+          { name: "Cada Piso", price: "R$ 2,00" },
+          { name: "Piso 01–08", price: "R$ 15,00" },
+          { name: "Lua Abissal", price: "R$ 10,00" }
+        ]
+      },
+      {
+        title: "Confronto Abissal",
+        items: [
+          { name: "Completo sem Penas", price: "R$ 7,00" },
+          { name: "Completo com Penas", price: "R$ 12,00" },
+          { name: "Completo com Armas 4★/5★", price: "R$ 20,00" }
+        ]
+      },
+      {
+        title: "Teatro Imaginário",
+        items: [
+          { name: "Fácil", price: "R$ 5,00" },
+          { name: "Médio", price: "R$ 10,00" },
+          { name: "Difícil", price: "R$ 15,00" },
+          { name: "Visionário", price: "R$ 20,00" },
+          { name: "Lunar", price: "R$ 25,00" }
+        ]
+      },
+      {
+        title: "Extras",
+        items: [
+          { name: "200k Moras", price: "R$ 1,00" },
+          { name: "Arma de Pesca", price: "R$ 14,00" },
+          { name: "Rastro Teatro", price: "R$ 4,00" },
+          { name: "Cada Refino", price: "R$ 7,00" },
+          { name: "TCG Completo", price: "R$ 45,00" },
+          { name: "Farm 50 unid. (Alimentos / Flores / Madeira / Inimigos)", price: "R$ 2,00 cada" }
+        ]
+      },
+      {
+        title: "Build de Personagem",
+        items: [
+          { name: "Básica", price: "R$ 5,00" },
+          { name: "Ótima", price: "R$ 15,00" },
+          { name: "Excelente", price: "R$ 30,00" }
+        ]
+      },
+      {
+        title: "Coleta de Oculis",
+        items: [
+          { name: "Anemoculus", price: "R$ 15,00" },
+          { name: "Geoculus", price: "R$ 25,00" },
+          { name: "Electroculus", price: "R$ 40,00" },
+          { name: "Dendroculus (Floresta)", price: "R$ 40,00" },
+          { name: "Dendroculus (Deserto)", price: "R$ 40,00" },
+          { name: "Hydroculus", price: "R$ 50,00" },
+          { name: "Pyroculus", price: "R$ 60,00" },
+          { name: "Lunoculus", price: "R$ 25,00" }
+        ]
+      },
+      {
+        title: "Exploração",
+        items: [
+          { name: "Mondstadt", price: "R$ 15,00" },
+          { name: "Espinha do Dragão", price: "R$ 25,00" },
+          { name: "Liyue", price: "R$ 35,00" },
+          { name: "Vale Chenyu", price: "R$ 30,00" },
+          { name: "Despenhadeiro", price: "R$ 30,00" },
+          { name: "Minas", price: "R$ 15,00" },
+          { name: "Inazuma", price: "R$ 45,00" },
+          { name: "Enkanomiya", price: "R$ 20,00" },
+          { name: "Sumeru (Floresta)", price: "R$ 55,00" },
+          { name: "Sumeru (Deserto)", price: "R$ 60,00" },
+          { name: "Fontaine", price: "R$ 50,00" },
+          { name: "Mar Antigo", price: "R$ 25,00" },
+          { name: "Natlan", price: "R$ 80,00" },
+          { name: "Montanha Sagrada", price: "R$ 25,00" },
+          { name: "Nod-Krai", price: "R$ 40,00" }
+        ]
+      },
+      {
+        title: "Eventos",
+        items: [
+          { name: "Evento Simples (eventos pequenos/secundários)", price: "R$ 5,00" },
+          { name: "Evento Principal (evento grande da versão)", price: "R$ 15,00" }
+        ]
+      },
+      {
+        title: "Cuidados com a Conta",
+        items: [
+          { name: "Manutenção Semanal (gasto de resina e missão diária)", price: "R$ 5,00" },
+          { name: "Manutenção Mensal (gasto de resina e missão diária)", price: "R$ 18,00" },
+          { name: "Manutenção da Versão (gasto de resina e missão diária)", price: "R$ 38,00" },
+        ]
+      }
+    ]
+  },
+  
+  zzz: {
+    title: "Zenless Zone Zero — Serviços",
+    img: "https://onpoplife.com.br/wp-content/uploads/2025/12/2.5-kv-capa.jpg",
+    desc: "Serviços Premium de Zenless Zone Zero.",
+    status: "Disponível",
+    statusClass: "disponivel",
+    // AQUI VOCÊ EDITA AS LISTAS DO ZZZ
+    sections: [
+      {
+        title: "Policromos",
+        items: [
+          { name: "800 Policromos (5 giros)", price: "R$ 9,00" },
+          { name: "1.600 Policromos (10 giros)", price: "R$ 14,00" },
+          { name: "3.200 Policromos (20 giros)", price: "R$ 24,00" },
+          { name: "4.800 Policromos (30 giros)", price: "R$ 34,00" },
+          { name: "6.400 Policromos (40 giros)", price: "R$ 44,00" },
+          { name: "8.000 Policromos (50 giros)", price: "R$ 54,00" }
+        ]
+      },
+      {
+        title: "Missão",
+        items: [
+          { name: "Missão principal (completa — 9 capítulos)", price: "R$ 70,00" },
+          { name: "Missão principal (1 capítulo)", price: "R$ 10,00" },
+          { name: "Missão secundária (cada)", price: "R$ 2,00" }
+        ]
+      },
+      {
+        title: "Evento",
+        items: [
+          { name: "Evento simples (eventos pequenos/secundários)", price: "R$ 5,00" },
+          { name: "Evento principal (evento grande da versão)", price: "R$ 20,00" }
+        ]
+      },
+      {
+        title: "Agentes",
+        items: [
+          { name: "Todas as histórias (18 no total)", price: "R$ 55,00" },
+          { name: "História individual (1)", price: "R$ 5,00" }
+        ]
+      },
+      {
+        title: "Oficial Miau-Miau",
+        items: [
+          { name: "Por área", price: "R$ 15,00" },
+          { name: "1 página", price: "R$ 6,00" }
+        ]
+      },
+      {
+        title: "End Games",
+        items: [
+          { name: "Nódulo Estável (Nível 1 ao 10)", price: "R$ 15,00" },
+          { name: "Nódulo de Conflito (Nível 1 ao 8)", price: "R$ 13,00" },
+          { name: "Nódulo Crítico (Nível 1 ao 7)", price: "R$ 12,00" },
+          { name: "Investida Mortal", price: "R$ 20,00" },
+          { name: "Teste de Combate Virtual (por nível)", price: "R$ 2,00" },
+          { name: "Teste de Combate: Sem Saída (por nível)", price: "R$ 3,00" } 
+        ]
+      },
+      {
+        title: "Cidade Definhada",
+        items: [
+          { name: "Área 01 — Metrô da Velha Capital", price: "R$ 10,00" },
+          { name: "Área 02 — Ruínas da Construção", price: "R$ 10,00" },
+          { name: "Área 03 — Ruínas do Edifício Gigante", price: "R$ 10,00" },
+          { name: "Canteiro Definhado", price: "R$ 15,00" },
+          { name: "Colheita Ardente", price: "R$ 15,00" }
+        ]
+      },
+      {
+        title: "Vazio Perdido",
+        items: [
+          { name: "Extermínio da Linha de Frente (até o nível máximo)", price: "R$ 15,00" },
+          { name: "Aniquilação dos Transgressores (todos os níveis)", price: "R$ 5,00" },
+          { name: "Operação de Reconstituição", price: "R$ 15,00" }
+        ]
+      },
+      {
+        title: "Cuidado com a Conta",
+        items: [
+          { name: "Pacote Semanal (diárias, gasto de bateria e passe)", price: "R$ 15,00" },
+          { name: "Pacote por Versão (diárias, gasto de bateria e passe)", price: "R$ 50,00" }
+        ]
+      }
+    ]
+  },
+
+  hsr: {
+    title: "Honkai: Star Rail — Serviços",
+    img: "https://webstatic.hoyoverse.com/upload/op-public/2023/09/14/3c862d085db721a5625b6e12649399bc_8067514115196038699.png",
+    desc: "Serviços Premium de Honkai: Star Rail.",
+    status: "Disponível",
+    statusClass: "disponivel",
+    sections: [
+      {
+        title: "Stellar Jade",
+        items: [
+          { name: "800 Stellar (5 giros)", price: "R$ 8,00" },
+          { name: "1.600 Stellar (10 giros)", price: "R$ 12,00" },
+          { name: "3.200 Stellar (20 giros)", price: "R$ 24,00" },
+          { name: "4.800 Stellar (30 giros)", price: "R$ 36,00" },
+          { name: "8.000 Stellar (50 giros)", price: "R$ 48,00" }
+        ]
+      },
+      {
+        title: "Cuidados",
+        items: [
+          { name: "Cuidado mensal", price: "R$ 15,00" },
+          { name: "Cuidado completo da versão", price: "R$ 50,00" }
+
+        ]
+      },
+      {
+        title: "End Games",
+        items: [
+          { name: "MOC", price: "R$ 20,00" },
+          { name: "Sombra AP", price: "R$ 40,00" },
+          { name: "Pura Ficção", price: "R$ 60,00" },
+          { name: "Arbitragem de Anomalias", price: "R$ 100,00" }
+        ]
+      },
+      {
+        title: "Exploração",
+        items: [
+          { name: "Nave da Herta", price: "R$ 10,00" },
+          { name: "Jarilo-VI", price: "R$ 20,00" },
+          { name: "Xianzhou", price: "R$ 35,00" },
+          { name: "Penacony", price: "R$ 50,00" },
+          { name: "Amphoreus", price: "R$ 45,00" }
+        ]
+      },
+      {
+        title: "Coletas",
+        items: [
+          { name: "Coleta de Pássaros de Origami", price: "R$ 35,00" },
+          { name: "Coleta de Ninfas", price: "R$ 5,00 / 10 ninfas" }
+        ]
+      },
+      {
+        title: "Missões",
+        items: [
+          { name: "Missão de Desbravamento (por ato)", price: "R$ 10,00" },
+          { name: "Desbravamento (completo)", price: "R$ 40,00" },
+          { name: "Missão de Companheiro", price: "R$ 10,00" }
+        ]
+      },
+      {
+        title: "Ascenção",
+        items: [
+          { name: "Up de Personagem", price: "R$ 10,00" },
+          { name: "Up de Rastro", price: "R$ 15,00" },
+          { name: "Up de Cone de Luz", price: "R$ 15,00" }
+        ]
+      },
+      {
+        title: "Conteúdos",
+        items: [
+          { name: "Universo Simulado Inteiro (cada mundo)", price: "R$ 50" },
+          { name: "Universo Simulado Semanal (cada mundo)", price: "R$ 15,00" },
+          { name: "Universo do Enxame", price: "R$ 35,00" },
+          { name: "Universo do Ouro e Engrenagem", price: "R$ 35,00" },
+          { name: "Universo Domínio Incógnito", price: "R$ 35,00" },
+          { name: "Universo Divergente (Amphoreus) Inteiro", price: "R$ 25,00" },
+          { name: "Universo Divergente (Amphoreus) Semanal", price: "R$ 15,00" },
+          { name: "Guerras Monetárias", price: "R$ 20,00" }
+        ]
+      }
+    ]
+  },
+
+  wuwa: {
+    title: "Wuthering Waves — Serviços",
+    img: "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/05/wuthering_waves_banner_schedule.jpg",
+    desc: "Serviços Premium de Wuthering Waves.",
+    status: "Disponível",
+    statusClass: "disponivel",
+    sections: [
+      {
+        title: "Astrites",
+        items: [
+          { name: "800 Astrites", price: "R$ 6,00" },
+          { name: "1.600 Astrites", price: "R$ 14,00" },
+          { name: "3.200 Astrites", price: "R$ 24,00" },
+          { name: "4.800 Astrites", price: "R$ 34,00" },
+          { name: "6.400 Astrites", price: "R$ 44,00" },
+          { name: "8.000 Astrites", price: "R$ 54,00" },
+          { name: "9.600 Astrites", price: "R$ 64,00" }
+        ]
+      },
+      {
+        title: "Exploração — Huanglong",
+        items: [
+          { name: "Gorges of Spirits", price: "R$ 27,00" },
+          { name: "Norfall Barrens", price: "R$ 26,00" },
+          { name: "Whining Aix's Mire", price: "R$ 28,00" },
+          { name: "Dim Forest", price: "R$ 25,00" },
+          { name: "Port City of Guixu", price: "R$ 24,00" },
+          { name: "Tiger's Maw", price: "R$ 28,00" },
+          { name: "Wuming Bay", price: "R$ 23,00" },
+          { name: "Jinzhou", price: "R$ 30,00" },
+          { name: "Desorock Highland", price: "R$ 19,00" },
+          { name: "Central Plains", price: "R$ 24,00" },
+          { name: "Mt. Firmament", price: "R$ 29,00" },
+          { name: "Huanglong 100% (pacote completo)", price: "R$ 228,00" }
+        ]
+      },
+      {
+        title: "Exploração — Black Shores",
+        items: [
+          { name: "Black Shores Archipelago + Tethys' Deep", price: "R$ 29,00" },
+        ]
+      },
+      {
+        title: "Exploração — Rinascita",
+        items: [
+          { name: "Ilha Principal", price: "R$ 115,00" },
+          { name: "Beohr Waters", price: "R$ 24,00" },
+          { name: "Avinoleum", price: "R$ 26,00" },
+          { name: "Septimont", price: "R$ 36,00" },
+          { name: "Fabricatorium of the Deep", price: "R$ 14,00" },
+          { name: "Sanguis Plateaus", price: "R$ 32,00" },
+          { name: "Rinascita 100% (pacote completo)", price: "R$ 250,00" }
+        ]
+      },
+      {
+        title: "Exploração — Roya Frostlands",
+        items: [
+          { name: "Etching Plains", price: "R$ 26,00" },
+          { name: "Startorch Academy", price: "R$ 24,00" },
+          { name: "Starward Riseway", price: "R$ 23,00" },
+          { name: "Fangspire Chasm", price: "R$ 25,00" },
+          { name: "Bjartr Woods", price: "R$ 23,00" },
+          { name: "Stagnant Run", price: "R$ 23,00" },
+          { name: "Rebirth Uplands", price: "R$ 22,00" },
+          { name: "Mawburrow Desert", price: "R$ 24,00" },
+          { name: "Giant's Gaze", price: "R$ 23,00" },
+          { name: "Roya Frostlands 100%", price: "R$ 186,00" }
+        ]
+      },
+      {
+        title: "End Games — Tower of Adversity",
+        items: [
+          { name: "Resonant", price: "R$ 10,00" },
+          { name: "Hazard", price: "R$ 16,00" },
+          { name: "Echoing", price: "R$ 11,00" },
+          { name: "Tower of Adversity (completa)", price: "R$ 30,00" },
+          { name: "Whimpering Wastes", price: "R$ 21,00" },
+          { name: "Holograma (Phantom Pain / Synchronization / Impermanence)", price: "R$ 1,50 por dificuldade" }
+
+        ]
+      },
+      {
+        title: "Data Bank",
+        items: [
+          { name: "Data Bank (nível 1 ao 30)", price: "R$ 58,00" },
+          { name: "Data Bank (por nível)", price: "R$ 2,50" }
+        ]
+      },
+      {
+        title: "Missões",
+        items: [
+          { name: "Missão Principal", price: "R$ 50,00 por região" },
+          { name: "Missão de Companheiro", price: "R$ 13,00" },
+          { name: "Missões de Exploração", price: "R$ 13,00" },
+          { name: "Missões Secundárias", price: "R$ 9,00" }
+        ]
+      },
+      {
+        title: "Up de Personagens",
+        items: [
+          { name: "Nível 1 até 90", price: "R$ 15,00" },
+          { name: "De 10 em 10 níveis", price: "R$ 5,00" },
+        ]
+      },
+      {
+        title: "Builds",
+        items: [
+          { name: "Build Básica", price: "R$ 10,00" },
+          { name: "Build Média", price: "R$ 13,00" },
+          { name: "Build Excelente", price: "R$ 20,00" }
+        ]
+      }
+    ]
+  }
+};
+
+// --- LÓGICA DO OVERLAY ---
+function openOverlay(key) {
+  const data = produtos[key];
+  if (!data) return;
+  
+  // 1. Gera o HTML das Seções (Listas) dinamicamente
+  let listsHTML = "";
+  if (data.sections && data.sections.length > 0) {
+    listsHTML = data.sections.map(section => `
+      <div class="section-wrapper">
+        <h4 class="section-title">${section.title}</h4>
+        <div class="price-table">
+          ${section.items.map(item => `
+            <div class="price-row">
+              <span>${item.name}</span>
+              <span>${item.price}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // 2. Monta o HTML Completo do Overlay
+  const contentHTML = `
+    <div class="card overlay-top-card">
+      <div class="image-wrap">
+        <img src="${data.img}" alt="${data.title}">
+      </div>
+      <div class="card-content">
+        <h3>${data.title}</h3>
+        <div class="status ${data.statusClass}">${data.status}</div>
+        <p class="info" style="margin-bottom:0.5rem;">${data.desc}</p>
+      </div>
+    </div>
+    
+    <div class="overlay-divider"></div>
+    
+    ${listsHTML}
+  `;
+
+  document.getElementById("overlayContent").innerHTML = contentHTML;
+  document.getElementById("overlay").classList.add("active");
+  document.body.style.overflow = "hidden"; // Trava scroll
+}
+
+function closeOverlay() {
+  document.getElementById("overlay").classList.remove("active");
+  document.body.style.overflow = "auto";
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === "Escape") closeOverlay();
+});
+</script>
 
 </body>
 </html>
