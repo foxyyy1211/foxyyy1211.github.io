@@ -542,19 +542,21 @@ footer {
 
 <nav class="navbar">
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="#" class="logo">
       <img src="https://64.media.tumblr.com/a17d8adeaaa5cefc2d690c81c325966f/e5278ae8b7ef6804-0b/s1280x1920/a462b421519bff4f7b066353e011a088d8119de4.png" alt="Logo">
       Nova Community
     </a>
 
     <div class="nav-links">
-      <a href="index.html" class="active">Início</a>
-      <a href="#">Como Comprar</a>
-      <a href="#">Termos de Compra</a>
+      <a href="#" class="active">Início</a>
+      
+      <a href="#" onclick="openInfoOverlay('comoComprar')">Como Comprar</a>
+      <a href="#" onclick="openInfoOverlay('termos')">Termos de Compra</a>
+      <a href="#" onclick="alert('O Sistema de Ticket do Site está DESATIVADO, Por gentileza utilizar do discord: https://discord.com/channels/1404336816563159111/1404503231245193376')">Tickets</a>
       <a href="#">SITE EM MANUTENÇÃO!!</a>
     </div>
 
-    <button class="mobile-menu-btn" onclick="alert('Menu em breve!')">
+    <button class="mobile-menu-btn" onclick="alert('Menu para Mobile em Breve!')">
       <i class="fa-solid fa-bars"></i>
     </button>
   </div>
@@ -665,8 +667,11 @@ footer {
   <div class="footer-container">
     <div class="footer-brand">
       <h4>
+        <div class="logo" onclick="alert('Feito com ❤︎ por Nova Community!')">
         <img src="https://64.media.tumblr.com/a17d8adeaaa5cefc2d690c81c325966f/e5278ae8b7ef6804-0b/s1280x1920/a462b421519bff4f7b066353e011a088d8119de4.png" alt="Logo">
-        NOVA COMMUNITY
+  <span>NOVA COMMUNITY</span>
+</div>
+
       </h4>
       <div class="social-icons">
         <a href="https://discord.gg/Szqbsd4TNa" class="social-btn"><i class="fa-brands fa-discord"></i></a>
@@ -704,7 +709,7 @@ footer {
     </div>
     <div class="build-version">
       <span class="dot-purple"></span>
-      V1.0.0
+      V1.1.0
     </div>
   </div>
 </footer>
@@ -718,6 +723,158 @@ footer {
 </div>
 
 <script>
+  function openInfoOverlay(type) {
+  const overlay = document.getElementById("overlay");
+  const content = document.getElementById("overlayContent");
+
+  let html = "";
+
+  if (type === "comoComprar") {
+  html = `
+    <div class="card info-card">
+      <div class="image-wrap">
+        <img src="https://placehold.co/600x350/252525/FFF?text=Como+Comprar" alt="Como Comprar">
+      </div>
+      <div class="card-content">
+        <h3>Como Comprar?</h3>
+        <div class="status disponivel">Guia Rápido</div>
+        
+        <div class="info-list">
+          <p class="info-item">Ao contratar um serviço, o cliente concorda com todas as regras.</p>
+          <p class="info-item">Não realizamos reembolso após o início do serviço.</p>
+          <p class="info-item">O prazo pode variar conforme a complexidade.</p>
+          <p class="info-item">Não nos responsabilizamos por punições externas.</p>
+          <p class="info-item">O cliente deve fornecer dados corretos da conta.</p>
+        </div>
+
+        <div class="card-footer">
+          <span class="preco">Leia com atenção</span>
+          <span class="btn-acao">Entendi</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+if (type === "termos") {
+  html = `
+    <div class="card info-card">
+      <div class="image-wrap">
+        <img src="https://images-ext-1.discordapp.net/external/hbmekzOx_6_kCH8PpVk-izW0vJXi0JG6RMF85WKIIMA/%3Fformat%3Dwebp/https/images-ext-1.discordapp.net/external/o58sE698_8TKgOHz8Tn0wKTkUfpx9lbpnnQF1UFBlc0/https/64.media.tumblr.com/9099abde36b4e77a456b0e213e802a80/e5278ae8b7ef6804-30/s2048x3072/8aae108567c4e5672b59b9ea991ff196a9131037.pnj?format=webp" alt="Termos">
+      </div>
+      <div class="card-content">
+        <h3>Termos de Compra</h3>
+        <div class="status em-breve">Obrigatório</div>
+        
+        <div class="info-list">
+          <p class="info-item">Ao efetuar qualquer compra na Nova Community, o cliente confirma que leu, entendeu e concorda integralmente com os termos abaixo:</p>
+        </div>
+
+        <div class="card-footer">
+        </div>
+      </div>
+
+    </div>
+       <div class="card info-card">
+        <div class="card-content">
+        <h3>Pagamentos e início do serviço</h3>
+        
+        <div class="info-list">
+          <p class="info-item">O prazo padrão para inicialização do serviço é de até 48 horas após a confirmação do pagamento. Durante períodos de alta demanda, pedimos paciência. Pressões ou cobranças indevidas não serão toleradas. O tempo pode variar conforme a complexidade do pedido, e solicitações fora do prazo não garantem prioridade.</p>
+        </div>
+
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+    </div>
+       <div class="card info-card">
+        <div class="card-content">
+        <h3>Reembolsos e arrependimentos</h3>
+        
+        <div class="info-list">
+          <p class="info-item">Arrependimentos e mudanças de ideia não são reembolsáveis. Reembolsos só serão considerados em casos de falha comprovada por parte da equipe e após análise interna. Tentativas de forçar reembolso, realizar ameaças ou causar transtornos resultarão em bloqueio permanente e perda de acesso a serviços futuros.</p>
+        </div>
+
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+    </div>
+       <div class="card info-card">
+        <div class="card-content">
+        <h3>Atendimento e suporte</h3>
+        
+        <div class="info-list">
+          <p class="info-item">O atendimento ocorre exclusivamente via tickets do Discord. Mensagens privadas à equipe serão ignoradas sem exceção. Os atendimentos são feitos por ordem de chegada, sem favoritismos. Respeite o tempo da equipe — qualquer forma de desrespeito pode resultar em encerramento do atendimento.</p>
+        </div>
+
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+    </div>
+       <div class="card info-card">
+        <div class="card-content">
+        <h3>Execução e entrega</h3>
+        
+        <div class="info-list">
+          <p class="info-item">A Nova Community se compromete a entregar exatamente o que foi solicitado e pago. Caso o cliente não envie as informações necessárias para execução, o prazo será suspenso até regularização. Entregas parciais não significam falha — algumas etapas podem ser feitas em fases separadas. Alterações pós-entrega podem gerar custo adicional.</p>
+        </div>
+
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+    </div>
+       <div class="card info-card">
+        <div class="card-content">
+        <h3>Conduta e respeito</h3>
+        
+        <div class="info-list">
+          <p class="info-item">O respeito à equipe é obrigatório. Linguagem ofensiva, sarcasmo excessivo, spam ou ironias serão tratadas como falta de respeito. A Nova Community reserva o direito de recusar atendimento a qualquer cliente que descumpra os princípios básicos de convivência.</p>
+        </div>
+
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+    </div>
+       <div class="card info-card">
+        <div class="card-content">
+        <h3>Responsabilidade do comprador</h3>
+        
+        <div class="info-list">
+          <p class="info-item">Ao adquirir qualquer serviço da Nova Community, o cliente concorda que o processo de execução envolve o uso de ferramentas que podem apresentar riscos à conta utilizada. Caso ocorra qualquer tipo de punição, bloqueio, erro ou banimento decorrente desse uso, a responsabilidade é integralmente do comprador. A Nova Community não se responsabiliza por perdas, danos ou penalidades aplicadas pela plataforma, nem oferece reembolso ou compensação em situações desse tipo.</p>
+        </div>
+
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+    </div>
+       <div class="card info-card">
+        <div class="card-content">
+        <h3>Alterações nos termos</h3>
+        
+        <div class="info-list">
+          <p class="info-item">Os termos podem ser atualizados a qualquer momento, sem aviso prévio. A versão válida e aplicável será sempre a mais recente publicada oficialmente. É responsabilidade do cliente manter-se informado sobre as atualizações.</p>
+        </div>
+
+        <div class="card-footer">
+          <span class="preco">⠀</span>
+          <span class="btn-acao">Aceitar</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+
+  content.innerHTML = html;
+  overlay.classList.add("active");
+}
+
 // --- CONFIGURAÇÃO DOS PRODUTOS E LISTAS ---
 // Para criar novas listas, basta adicionar um bloco { title: "...", items: [...] } dentro de "sections"
 const produtos = {
@@ -729,17 +886,17 @@ const produtos = {
     statusClass: "disponivel",
     // AQUI VOCÊ EDITA AS LISTAS DO GENSHIN
     sections: [
-      {
-        title: "Giros — Exploração Baixa (Abaixo de 70%)",
-        items: [
-          { name: "800 Gemas (05 giros)", price: "R$ 6,00" },
-          { name: "1.600 Gemas (10 giros)", price: "R$ 12,00" },
-          { name: "3.200 Gemas (20 giros)", price: "R$ 23,00" },
-          { name: "4.800 Gemas (30 giros)", price: "R$ 34,00" },
-          { name: "6.400 Gemas (40 giros)", price: "R$ 44,00" },
-          { name: "8.000 Gemas (50 giros)", price: "R$ 54,00" }
-        ]
-      },
+        {
+          title: "Giros — Exploração Baixa (Abaixo de 70%)",
+          items: [
+            { name: "800 Gemas (05 giros)", price: "R$ 6,00" },
+            { name: "1.600 Gemas (10 giros)", price: "R$ 12,00" },
+            { name: "3.200 Gemas (20 giros)", price: "R$ 23,00" },
+            { name: "4.800 Gemas (30 giros)", price: "R$ 34,00" },
+            { name: "6.400 Gemas (40 giros)", price: "R$ 44,00" },
+            { name: "8.000 Gemas (50 giros)", price: "R$ 54,00" }
+          ]
+        },
       {
         title: "Giros — Exploração Baixa (Acima de 70%)",
         items: [
